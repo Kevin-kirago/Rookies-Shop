@@ -4,7 +4,12 @@
 	"description": "A bakers shop company",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"watch:sass": "node-sass sass/main.scss css/style.css -w",
+		"start": "npm-run-all watch:sass"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Kevin-kirago/Movie-Shop.git"
 	},
 	"author": "Kevin Kiragu",
 	"license": "ISC",

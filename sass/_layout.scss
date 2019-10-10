@@ -1,0 +1,101 @@
+.header {
+	position: relative;
+	height: 120vh;
+	z-index: 1;
+
+	background-image: linear-gradient(to left bottom, rgba(45, 52, 54, 0.9), rgba(0, 0, 0, 0.9)), url(../images/hero-bg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+
+	clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-moz-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-ms-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-o-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+}
+
+.about {
+	position: relative;
+	background-color: var(--color-white);
+	margin-top: -20vh;
+	padding: 25rem 0;
+	z-index: 0;
+	height: 120vh;
+
+	clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-moz-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-ms-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-o-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+}
+
+.store {
+	position: relative;
+	margin-top: -20vh;
+	height: 120vh;
+	background-color: var(--color-grey-light-2);
+	z-index: -1;
+
+	clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-moz-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-ms-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+	-o-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
+}
+
+.cart {
+	position: relative;
+	background-color: var(--color-white);
+	margin-top: -20vh;
+	padding: 25rem 0;
+	z-index: -2;
+	height: 120vh;
+}
+
+.footer {
+	position: relative;
+	background-color: var(--color-navy);
+	padding: 20rem 0;
+}
+
+// Grid Section
+.row {
+	max-width: 114rem;
+	margin: 0 auto;
+
+	@media only screen and (max-width: $bp-medium) {
+		max-width: 60rem;
+	}
+
+	@include clearfix;
+
+	[class^="col-"] {
+		float: left;
+		margin: 2rem;
+
+		@media only screen and (max-width: $bp-medium) {
+			margin: 1rem;
+		}
+	}
+
+	.col-1-of-2 {
+		width: calc(((100%) / 2) - 4rem);
+
+		@media only screen and (max-width: $bp-small) {
+			width: 100%;
+		}
+	}
+
+	.col-1-of-3 {
+		width: calc(((100%) / 3) - 4rem);
+
+		@media only screen and (max-width: $bp-medium) {
+			width: calc(((100%) / 2) - 2rem);
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			width: 100%;
+		}
+	}
+}
