@@ -26,6 +26,7 @@
 .store {
 	position: relative;
 	padding: 20rem 0;
+	z-index: 1;
 	background-color: var(--color-grey-light-2);
 
 	transform: skewY(-7deg);
@@ -43,18 +44,16 @@
 	}
 }
 
-.cart {
+.contact {
 	position: relative;
 	background-color: var(--color-white);
 	padding: 20rem 0;
-	height: 120vh;
-	z-index: -10;
 }
 
 .footer {
 	position: relative;
 	background-color: var(--color-navy);
-	padding: 20rem 0;
+	padding: 7rem 0;
 }
 
 // Grid Section

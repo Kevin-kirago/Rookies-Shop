@@ -54,6 +54,7 @@ body {
 .store {
   position: relative;
   padding: 20rem 0;
+  z-index: 1;
   background-color: var(--color-grey-light-2);
   transform: skewY(-7deg);
   -webkit-transform: skewY(-7deg);
@@ -67,17 +68,15 @@ body {
     -ms-transform: skewY(7deg);
     -o-transform: skewY(7deg); }
 
-.cart {
+.contact {
   position: relative;
   background-color: var(--color-white);
-  padding: 20rem 0;
-  height: 120vh;
-  z-index: -10; }
+  padding: 20rem 0; }
 
 .footer {
   position: relative;
   background-color: var(--color-navy);
-  padding: 20rem 0; }
+  padding: 7rem 0; }
 
 .row {
   max-width: 114rem;
@@ -152,11 +151,6 @@ body {
   margin: 2rem 1rem;
   text-decoration: none;
   font-size: 1.3rem;
-  border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
   transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
@@ -232,3 +226,87 @@ body {
       justify-content: flex-end;
       font-size: 1.8rem;
       color: var(--color-grey-dark-2); }
+
+.form {
+  position: relative;
+  width: 100%;
+  font-family: "Lato", sans-serif; }
+  .form__group {
+    position: relative;
+    margin: 2rem 0;
+    width: 100%;
+    display: flex; }
+  .form__input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 1rem;
+    width: 100%; }
+    .form__input label {
+      color: var(--color-grey-dark-1);
+      margin-bottom: 1rem; }
+    .form__input-control {
+      display: block;
+      padding: 1rem;
+      color: var(--color-grey-dark-2);
+      font-size: 1.8rem;
+      border: 1px solid var(--color-grey-dark-2); }
+      .form__input-control:focus {
+        outline: none;
+        border: 1px solid var(--color-yellow); }
+    .form__input-btn {
+      width: 50%;
+      padding: 1.5rem 0;
+      background-color: var(--color-yellow);
+      border: none;
+      color: var(--color-white); }
+
+.contact__details {
+  position: relative;
+  width: 100%;
+  padding: 1rem 5rem; }
+  .contact__details h3 {
+    color: var(--color-navy);
+    font-size: 2.5rem; }
+  .contact__details-info {
+    display: flex;
+    margin: 1.5rem 0; }
+    .contact__details-info .icon {
+      margin-right: 2.5rem;
+      font-size: 2rem;
+      color: var(--color-yellow); }
+    .contact__details-info .detail {
+      font-size: 1.5rem; }
+
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20rem;
+  width: 60%; }
+  .footer__logo p {
+    color: var(--color-grey-dark-2); }
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 20rem; }
+  .footer__nav-list {
+    list-style: none;
+    text-decoration: none; }
+    .footer__nav-list:first-child a {
+      color: var(--color-yellow); }
+  .footer__nav-link:link, .footer__nav-link:visited {
+    font-size: 1.4rem;
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in; }
+  .footer__nav-link:hover, .footer__nav-link:active {
+    color: var(--color-yellow); }
