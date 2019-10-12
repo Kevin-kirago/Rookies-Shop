@@ -9,6 +9,8 @@
 
 	--color-grey-dark-1: #333;
 	--color-grey-dark-2: #777;
+
+	--shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 }
 
 $bp-largest: 75em; // 1200px
@@ -46,6 +48,7 @@ html {
 
 body {
 	font-family: "Lato", sans-serif;
-	line-height: 1.7;
+	font-size: 1.4rem;
+	line-height: 1.8;
 	font-weight: 400;
 }
