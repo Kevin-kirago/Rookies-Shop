@@ -165,6 +165,84 @@ body {
   -ms-transform: translateY(-2px);
   -o-transform: translateY(-2px); }
 
+.navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: none;
+  padding: 3rem 0;
+  z-index: 20; }
+  .navigation .row {
+    display: flex;
+    justify-content: space-between; }
+    .navigation .row::after {
+      content: none; }
+  .navigation__header {
+    display: flex;
+    align-items: center;
+    width: 20%; }
+    .navigation__header-logo {
+      padding-left: 1rem;
+      font-size: 2rem;
+      color: var(--color-white); }
+  .navigation__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%; }
+    .navigation__list-item {
+      list-style: none; }
+    .navigation__list-link {
+      text-decoration: none;
+      color: var(--color-white);
+      font-size: 1.5rem; }
+  .navigation__store {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white); }
+    .navigation__store-icon {
+      margin-right: 1rem; }
+  .navigation__drawer {
+    position: fixed;
+    width: 25%;
+    top: 0;
+    right: 0;
+    z-index: 30;
+    background-color: var(--color-grey-light-2);
+    height: 100vh;
+    opacity: 1;
+    visibility: hidden; }
+    .navigation__drawer-close {
+      position: relative;
+      padding: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.5rem;
+      color: var(--color-navy); }
+
+.header__content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%); }
+  .header__content-heading {
+    padding: 0 1rem;
+    font-size: 5rem;
+    color: var(--color-white); }
+  .header__content-paragraph {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    color: var(--color-grey-dark-2); }
+
 .about__img {
   object-fit: cover;
   width: 100%;
