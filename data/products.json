@@ -1,0 +1,130 @@
+{
+	"items": [
+		{
+			"sys": { "id": "0" },
+			"fields": {
+				"title": "Modern Chair",
+				"price": 180,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product1.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "1" },
+			"fields": {
+				"title": "Plant Pot",
+				"price": 100,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product2.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "2" },
+			"fields": {
+				"title": "Metallic Chair",
+				"price": 250,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product3.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "3" },
+			"fields": {
+				"title": "Small Table",
+				"price": 130,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product4.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "4" },
+			"fields": {
+				"title": "Rocking Chair",
+				"price": 295,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product5.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "5" },
+			"fields": {
+				"title": "Sitting Lights",
+				"price": 380,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "../images/products/product6.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "6" },
+			"fields": {
+				"title": "Minimalistic Pot",
+				"price": 230,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "./images/products/product7.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "7" },
+			"fields": {
+				"title": "Home Deco",
+				"price": 340,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "./images/products/product8.jpg"
+						}
+					}
+				}
+			}
+		},
+		{
+			"sys": { "id": "8" },
+			"fields": {
+				"title": "Bottle Seremics",
+				"price": 265,
+				"image": {
+					"fields": {
+						"file": {
+							"url": "./images/products/product9.jpg"
+						}
+					}
+				}
+			}
+		}
+	]
+}
