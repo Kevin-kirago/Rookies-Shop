@@ -34,18 +34,85 @@
                     <div class="navigation__store-icon">
                         <i class="ion-android-cart"></i>
                     </div>
-                    <div class="navigation__store-content">[<span>0</span>]</div>
+                    <div class="navigation__store-content">[<span class="navigation__store-value">0</span>]</div>
                 </div>
             </div>
 
             <div class="navigation__drawer">
                 <div class="navigation__drawer-close">
-                    <span>Shopping Cart</span>
-                    <i class="ion-close"></i>
+                    <span>Your Cart</span>
+                    <div class="icon-close">
+                        <i class="ion-close"></i>
+                    </div>
+                </div>
+                <div class="navigation__drawer-list">
+
+                    <!-- Cart Item start -->
+                    <div class="cart__item">
+                        <figure class="cart__item-detail">
+                            <div class="cart__item-img">
+                                <img src="./images/products/product1.jpg" alt="cart-image-item">
+                            </div>
+                            <figcaption class="item__description">
+                                <h3 class="item__name">Rocking Chair</h3>
+                                <div class="item__price">$<span> 295</span></div>
+                            </figcaption>
+                        </figure>
+
+                        <div class="cart__item-adjuster">
+                            <div class="cart__item-icon cart__item-icon-up">
+                                <i class="ion-chevron-up"></i>
+                            </div>
+                            <span>0</span>
+                            <div class="cart__item-icon cart__item-icon-down">
+                                <i class="ion-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="cart__item-icon cart__item-remove">
+                            <i class="ion-trash-b"></i>
+                        </div>
+                    </div>
+                    <!-- Cart Item end -->
+
+                    <!-- Cart Item start -->
+                    <div class="cart__item">
+                        <figure class="cart__item-detail">
+                            <div class="cart__item-img">
+                                <img src="./images/products/product2.jpg" alt="cart-image-item">
+                            </div>
+                            <figcaption class="item__description">
+                                <h3 class="item__name">Plant Pot</h3>
+                                <div class="item__price">$<span> 100</span></div>
+                            </figcaption>
+                        </figure>
+
+                        <div class="cart__item-adjuster">
+                            <div class="cart__item-icon cart__item-icon-up">
+                                <i class="ion-chevron-up"></i>
+                            </div>
+                            <span>0</span>
+                            <div class="cart__item-icon cart__item-icon-down">
+                                <i class="ion-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="cart__item-icon cart__item-remove">
+                            <i class="ion-trash-b"></i>
+                        </div>
+                    </div>
+                    <!-- Cart Item end -->
+
+
+                    <div class="cart__result">
+                        <h1>Your Total : <span class="cart__result-total">0.00</span></h1>
+                        <div class="cart__result-link">
+                            <a href="#" class="btn">Clear all</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
-
         <!-- Navigation end Section -->
 
 
@@ -53,7 +120,7 @@
         <!-- Header Section -->
         <header class="header">
             <div class="header__content">
-                <h1 class="header__content-heading">Fashion Collection 2019</h1>
+                <h1 class="header__content-heading">Furniture Collection 2019</h1>
                 <p class="header__content-paragraph">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                 <a href="#" class="btn">Shop now</a>
             </div>
