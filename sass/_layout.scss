@@ -10,9 +10,6 @@
 
 	clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
-	-moz-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
-	-ms-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
-	-o-clip-path: polygon(0 0, 100% 0, 100% 100vh, 0 100%);
 }
 
 .about {
@@ -28,19 +25,10 @@
 	padding: 20rem 0;
 	z-index: 1;
 	background-color: var(--color-grey-light-2);
-
 	transform: skewY(-7deg);
-	-webkit-transform: skewY(-7deg);
-	-moz-transform: skewY(-7deg);
-	-ms-transform: skewY(-7deg);
-	-o-transform: skewY(-7deg);
 
 	& > * {
 		transform: skewY(7deg);
-		-webkit-transform: skewY(7deg);
-		-moz-transform: skewY(7deg);
-		-ms-transform: skewY(7deg);
-		-o-transform: skewY(7deg);
 	}
 }
 
@@ -69,6 +57,11 @@
 	@media only screen and (max-width: $bp-small) {
 		max-width: 60rem;
 		padding: 1rem;
+	}
+
+	@media only screen and (max-width: $bp-smallest) {
+		max-width: 40rem;
+		padding: 0;
 	}
 
 	@include clearfix;
