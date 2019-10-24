@@ -67,6 +67,28 @@ const StorageController = (function() {
 					localStorage.setItem("Cart-Data", JSON.stringify(data));
 				}
 			}
+		},
+
+		removeItemFromLS: id => {
+			// get items from local storage
+			let data = JSON.parse(localStorage.getItem("Cart-Data"));
+			let sum = 0;
+
+			// Loop over the array
+			data.cart_items.forEach((cur, index) => {
+				if (id === cur.id) {
+					data.cart_items.splice(index, 1);
+				}
+			});
+
+			data.cart_items.forEach(item => {
+				sum += item.total;
+			});
+
+			data.total_price = sum;
+
+			// update local storage
+			localStorage.setItem("Cart-Data", JSON.stringify(data));
 		}
 	};
 })();
@@ -143,6 +165,20 @@ const DataController = (function() {
 			}
 		},
 
+		removeItemFromDS: id => {
+			let ids, index;
+
+			ids = data.cart_items.map(item => {
+				return item.id;
+			});
+
+			index = ids.indexOf(id);
+
+			if (index !== -1) {
+				data.cart_items.splice(index, 1);
+			}
+		},
+
 		calculateCartTotals: () => {
 			let sum = 0;
 
@@ -172,9 +208,9 @@ const DataController = (function() {
 // ////////////////////////////////////////////////////////////////////
 const UIController = (function() {
 	const domStrings = {
+		cartContainer: " .cart__list",
 		shopContainer: ".store__container",
 		navDrawer: ".navigation__drawer",
-		navDrawerList: ".cart__list",
 		navStoreValue: ".navigation__store-value",
 		cartTotal: ".cart__result-total"
 	};
@@ -224,7 +260,7 @@ const UIController = (function() {
 		addItemToUi: obj => {
 			let html, element, inCart, cartItemID;
 
-			element = document.querySelector(domStrings.navDrawerList);
+			element = document.querySelector(domStrings.cartContainer);
 
 			cartItemID = [...document.querySelectorAll(".cart__item")].map(el => {
 				let itemID = el.id.split("-");
@@ -244,9 +280,9 @@ const UIController = (function() {
 						<div class="cart__item-img">
 							<img src=${obj.image_url} alt="cart-image-item">
 						</div>
-						<figcaption class="item__description">
-							<h3 class="item__name">${obj.title}</h3>
-							<div class="item__price">$<span> ${obj.price}</span></div>
+						<figcaption class="cart__item-description">
+							<h3 class="cart__item-name">${obj.title}</h3>
+							<div class="cart__item-price">$<span> ${obj.price}</span></div>
 						</figcaption>
 					</figure>
 					<div class="cart__item-adjuster">
@@ -265,13 +301,19 @@ const UIController = (function() {
 				<!-- Cart Item end -->`;
 
 				element.insertAdjacentHTML("beforeend", html);
+				alert("Item has been added to cart");
 			}
+		},
+
+		removeItemFromUI: id => {
+			let item = document.getElementById(id);
+			item.parentElement.removeChild(item);
 		},
 
 		populateCart: obj => {
 			let html = "",
 				element;
-			element = document.querySelector(domStrings.navDrawerList);
+			element = document.querySelector(domStrings.cartContainer);
 
 			obj.cart_items.forEach(item => {
 				html += `
@@ -281,9 +323,9 @@ const UIController = (function() {
 						<div class="cart__item-img">
 							<img src=${item.image_url} alt="cart-image-item">
 						</div>
-						<figcaption class="item__description">
-							<h3 class="item__name">${item.title}</h3>
-							<div class="item__price">$<span> ${item.price}</span></div>
+						<figcaption class="cart__item-description">
+							<h3 class="cart__item-name">${item.title}</h3>
+							<div class="cart__item-price">$<span> ${item.price}</span></div>
 						</figcaption>
 					</figure>
 					<div class="cart__item-adjuster">
@@ -307,7 +349,6 @@ const UIController = (function() {
 
 		updateTotalsUI: obj => {
 			document.querySelector(domStrings.navStoreValue).textContent = obj.cart_items.length;
-
 			document.querySelector(domStrings.cartTotal).textContent = obj.total_price;
 		},
 
@@ -341,6 +382,8 @@ const AppController = (function(strgCtrl, dataCtrl, uiCtrl) {
 					});
 				});
 		});
+
+		document.querySelector(dom.cartContainer).addEventListener("click", cartLogic);
 
 		// navigation
 		if (document.querySelector(dom.navDrawer)) {
@@ -382,6 +425,30 @@ const AppController = (function(strgCtrl, dataCtrl, uiCtrl) {
 
 		// Update totals
 		updateTotals();
+	};
+
+	const cartLogic = e => {
+		let itemID, id;
+		if (e.target.parentElement.classList.contains("cart__item-remove")) {
+			itemID = e.target.parentElement.parentElement.id.split("-");
+			id = parseInt(itemID[1]);
+
+			// Remove item from our data structure
+			dataCtrl.removeItemFromDS(id);
+
+			// Remove item from local storage
+			strgCtrl.removeItemFromLS(id);
+
+			// Remove item from UI
+			uiCtrl.removeItemFromUI(itemID.join("-"));
+
+			// Update results and ui
+			updateTotals();
+		} else if (e.target.parentElement.classList.contains("cart__item-icon-up")) {
+			console.log("Btn -up");
+		} else if (e.target.parentElement.classList.contains("cart__item-icon-down")) {
+			console.log("Btn -down");
+		}
 	};
 
 	return {

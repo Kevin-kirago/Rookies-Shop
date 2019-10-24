@@ -200,7 +200,8 @@ body {
     right: 0;
     z-index: 30;
     background-color: var(--color-grey-light-2);
-    height: 100vh;
+    height: 100%;
+    overflow: scroll;
     opacity: 0;
     visibility: hidden;
     transform: translateX(100%);
@@ -244,6 +245,26 @@ body {
       object-fit: cover;
       width: 8rem;
       height: 8rem; }
+  .cart__item-description {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start; }
+  .cart__item-name {
+    position: relative;
+    font-size: 1.75rem;
+    color: var(--color-navy); }
+    .cart__item-name::before {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 8rem;
+      height: 2px;
+      left: 0;
+      background-color: var(--color-yellow); }
+  .cart__item-price {
+    width: 50%;
+    height: 100%; }
   .cart__item-icon {
     font-size: 1.8rem;
     color: var(--color-navy);

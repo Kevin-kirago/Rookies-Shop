@@ -122,7 +122,8 @@
 		right: 0;
 		z-index: 30;
 		background-color: var(--color-grey-light-2);
-		height: 100vh;
+		height: 100%;
+		overflow: scroll;
 
 		opacity: 0;
 		visibility: hidden;
@@ -188,6 +189,34 @@
 			width: 8rem;
 			height: 8rem;
 		}
+	}
+
+	&-description {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-items: flex-start;
+	}
+
+	&-name {
+		position: relative;
+		font-size: 1.75rem;
+		color: var(--color-navy);
+
+		&::before {
+			position: absolute;
+			display: block;
+			content: "";
+			width: 8rem;
+			height: 2px;
+			left: 0;
+			background-color: var(--color-yellow);
+		}
+	}
+
+	&-price {
+		width: 50%;
+		height: 100%;
 	}
 
 	&-icon {
