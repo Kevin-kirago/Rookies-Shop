@@ -69,6 +69,40 @@ const StorageController = (function() {
 			}
 		},
 
+		increaseCountInLS: id => {
+			// get items from local storage
+			let data = JSON.parse(localStorage.getItem("Cart-Data"));
+			let item = data.cart_items.find(el => el.id === id);
+			item.count += 1;
+			item.total = item.count * item.price;
+
+			let sum = 0;
+			data.cart_items.forEach(item => {
+				sum += item.total;
+			});
+			data.total_price = sum;
+
+			localStorage.setItem("Cart-Data", JSON.stringify(data));
+		},
+
+		decreaseCountInLS: id => {
+			// get items from local storage
+			let data = JSON.parse(localStorage.getItem("Cart-Data"));
+			let item = data.cart_items.find(el => el.id === id);
+			if (item.count !== 1) {
+				item.count -= 1;
+				item.total = item.count * item.price;
+
+				let sum = 0;
+				data.cart_items.forEach(item => {
+					sum += item.total;
+				});
+				data.total_price = sum;
+
+				localStorage.setItem("Cart-Data", JSON.stringify(data));
+			}
+		},
+
 		removeItemFromLS: id => {
 			// get items from local storage
 			let data = JSON.parse(localStorage.getItem("Cart-Data"));
@@ -86,6 +120,15 @@ const StorageController = (function() {
 			});
 
 			data.total_price = sum;
+
+			// update local storage
+			localStorage.setItem("Cart-Data", JSON.stringify(data));
+		},
+
+		clearItemsFromLS: () => {
+			let data = JSON.parse(localStorage.getItem("Cart-Data"));
+			data.cart_items.splice(0, data.cart_items.length);
+			data.total_price = 0;
 
 			// update local storage
 			localStorage.setItem("Cart-Data", JSON.stringify(data));
@@ -165,6 +208,22 @@ const DataController = (function() {
 			}
 		},
 
+		increaseCountInDS: id => {
+			let item = data.cart_items.find(el => el.id === id);
+			item.count += 1;
+			item.total = item.price * item.count;
+			return item;
+		},
+
+		decreaseCountInDS: id => {
+			let item = data.cart_items.find(el => el.id === id);
+			if (item.count !== 1) {
+				item.count -= 1;
+				item.total = item.price * item.count;
+			}
+			return item;
+		},
+
 		removeItemFromDS: id => {
 			let ids, index;
 
@@ -187,6 +246,10 @@ const DataController = (function() {
 			});
 
 			data.total_price = sum;
+		},
+
+		clearItemsFromDs: () => {
+			data.cart_items.splice(0, data.cart_items.length);
 		},
 
 		getItemProducts: async () => {
@@ -212,7 +275,8 @@ const UIController = (function() {
 		shopContainer: ".store__container",
 		navDrawer: ".navigation__drawer",
 		navStoreValue: ".navigation__store-value",
-		cartTotal: ".cart__result-total"
+		cartTotal: ".cart__result-total",
+		clearBtn: ".clear__btn"
 	};
 
 	return {
@@ -305,9 +369,21 @@ const UIController = (function() {
 			}
 		},
 
+		updateCountInUI: (id, obj) => {
+			let parNode = document.getElementById(id);
+			parNode.children[1].children[1].textContent = obj.count;
+		},
+
 		removeItemFromUI: id => {
 			let item = document.getElementById(id);
 			item.parentElement.removeChild(item);
+		},
+
+		clearItemsFromUI: () => {
+			let items = document.querySelectorAll(".cart__item");
+			items.forEach(item => {
+				item.remove();
+			});
 		},
 
 		populateCart: obj => {
@@ -383,7 +459,11 @@ const AppController = (function(strgCtrl, dataCtrl, uiCtrl) {
 				});
 		});
 
+		// Cart Logic (Remove, increase Count, decrease count)
 		document.querySelector(dom.cartContainer).addEventListener("click", cartLogic);
+
+		// Clear Items
+		document.querySelector(dom.clearBtn).addEventListener("click", clearItems);
 
 		// navigation
 		if (document.querySelector(dom.navDrawer)) {
@@ -445,10 +525,50 @@ const AppController = (function(strgCtrl, dataCtrl, uiCtrl) {
 			// Update results and ui
 			updateTotals();
 		} else if (e.target.parentElement.classList.contains("cart__item-icon-up")) {
-			console.log("Btn -up");
+			itemID = e.target.parentElement.parentElement.parentElement.id.split("-");
+			id = parseInt(itemID[1]);
+
+			// Increase count in our data structure
+			let obj = dataCtrl.increaseCountInDS(id);
+
+			// Increase count in our local Storage
+			strgCtrl.increaseCountInLS(id);
+
+			// update count in UI
+			uiCtrl.updateCountInUI(itemID.join("-"), obj);
+
+			// Update results
+			updateTotals();
 		} else if (e.target.parentElement.classList.contains("cart__item-icon-down")) {
-			console.log("Btn -down");
+			itemID = e.target.parentElement.parentElement.parentElement.id.split("-");
+			id = parseInt(itemID[1]);
+
+			// Increase count in our data structure
+			let obj = dataCtrl.decreaseCountInDS(id);
+
+			// Increase count in our local Storage
+			strgCtrl.decreaseCountInLS(id);
+
+			// update count in UI
+			uiCtrl.updateCountInUI(itemID.join("-"), obj);
+
+			// Update results
+			updateTotals();
 		}
+	};
+
+	const clearItems = e => {
+		// clear item from data Structure
+		dataCtrl.clearItemsFromDs();
+
+		// Clear item from local storage
+		strgCtrl.clearItemsFromLS();
+
+		// Clear item from UI
+		uiCtrl.clearItemsFromUI();
+
+		// Update ui
+		updateTotals();
 	};
 
 	return {
