@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"watch:sass": "node-sass sass/main.scss css/style.css -w",
-		"start": "npm-run-all watch:sass"
+		"start": "npm-run-all watch:sass",
+		"compress:css": "node-sass css/style.css css/style.css --output-style compressed",
+		"build:css": "npm-run-all compress:css"
 	},
 	"repository": {
 		"type": "git",
