@@ -7,10 +7,11 @@ OBJECTIVE: 1. Emulate a real world ecommerce applicatio with the following chara
  - Fully functional shopping cart 
    * Able to add items
    * Able to remove items
+   * increase/decresae item count in cart
    * Able to get total budget of items in the cart
    * Able to clear all items from the cart
 
- - Implement local session responsible of caching cart data by persistence  
+ - Implement local storage to enable data persistence by caching cart data and shop products  
 
 ==================================================================================================
 
