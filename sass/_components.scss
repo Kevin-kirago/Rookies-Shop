@@ -75,6 +75,10 @@
 		align-items: center;
 		width: 20%;
 
+		@media only screen and (max-width: $bp-small) {
+			width: 50%;
+		}
+
 		&-logo {
 			padding-left: 1rem;
 			font-size: 2rem;
@@ -87,6 +91,10 @@
 		align-items: center;
 		justify-content: space-evenly;
 		width: 40%;
+
+		@media only screen and (max-width: $bp-small) {
+			display: none;
+		}
 
 		&-item {
 			list-style: none;
@@ -261,10 +269,19 @@
 	text-align: center;
 	transform: translate(-50%, -50%);
 
+	@media only screen and (max-width: $bp-small) {
+		width: 100%;
+	}
+
 	&-heading {
 		padding: 0 1rem;
 		font-size: 5rem;
 		color: var(--color-white);
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 1rem;
+			font-size: 3rem;
+		}
 	}
 
 	&-paragraph {
@@ -407,6 +424,10 @@
 			background-color: var(--color-yellow);
 			border: none;
 			color: var(--color-white);
+
+			@media only screen and (max-width: $bp-small) {
+				width: 100%;
+			}
 		}
 	}
 }
@@ -415,6 +436,10 @@
 	position: relative;
 	width: 100%;
 	padding: 1rem 5rem;
+
+	@media only screen and (max-width: $bp-small) {
+		padding: 1rem;
+	}
 
 	h3 {
 		color: var(--color-navy);
@@ -450,6 +475,10 @@
 
 		p {
 			color: var(--color-grey-dark-2);
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			width: 100%;
 		}
 	}
 
